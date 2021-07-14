@@ -1,20 +1,20 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import { createLogger } from 'redux-logger';
+import { createStore, applyMiddleware, compose } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import { createLogger } from 'redux-logger'
 
-import reducers from 'redux/reducers';
-import rootSaga from 'redux/sagas';
+import reducers from 'redux/reducers'
+import rootSaga from 'redux/sagas'
 
-import notificationMiddleware from 'redux/middlewares/notification.middleware';
-import redirectMiddleware from 'redux/middlewares/redirect.middleware';
-import storageMiddleware from 'redux/middlewares/storage.middleware';
+import notificationMiddleware from 'redux/middlewares/notification.middleware'
+import redirectMiddleware from 'redux/middlewares/redirect.middleware'
+import storageMiddleware from 'redux/middlewares/storage.middleware'
 
-import { ENVIRONMENTS } from 'helpers/enums/environments';
-import { ENVIRONMENT } from 'configs/configs';
+import { ENVIRONMENTS } from 'helpers/enums/environments'
+import { ENVIRONMENT } from 'configs/configs'
 
 declare global {
   interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
   }
 }
 
@@ -22,10 +22,10 @@ const composeEnhancers =
   (ENVIRONMENT !== ENVIRONMENTS.production &&
     typeof window !== 'undefined' &&
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
-  compose;
+  compose
 
-const sagaMiddleware = createSagaMiddleware();
-const loggerMiddleware = createLogger();
+const sagaMiddleware = createSagaMiddleware()
+const loggerMiddleware = createLogger()
 
 const store = createStore(
   reducers,
@@ -35,11 +35,11 @@ const store = createStore(
       notificationMiddleware,
       redirectMiddleware,
       storageMiddleware,
-      loggerMiddleware,
-    ),
-  ),
-);
+      loggerMiddleware
+    )
+  )
+)
 
-sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga)
 
-export default store;
+export default store
