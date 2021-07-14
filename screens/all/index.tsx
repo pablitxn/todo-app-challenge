@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { IAll } from './types'
 import { Container } from './styles'
-import Text from '../../components/_shared/text'
+import { Text } from '../../components/_shared/text'
 
 const All: FC<IAll> = ({}) => {
   return (
