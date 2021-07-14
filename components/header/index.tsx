@@ -1,19 +1,16 @@
 import React, { FC } from 'react'
-import { IHeader } from './types'
-import { Container, TouchableOpacity } from './styles'
-import Text from '../_shared/text'
+import { Container, ContainerIcons, TouchableOpacity } from './styles'
+import { Title } from '../_shared/text'
 import { Bell, Search, Menu } from 'react-feather'
 
-const Header: FC<IHeader> = ({ path }) => {
+const Header: FC = () => {
   const handlePress = () => {}
 
   return (
     <Container>
-      <Container>
-        <Text>Board</Text>
-      </Container>
+      <Title>Board</Title>
 
-      <Container>
+      <ContainerIcons>
         <TouchableOpacity onPress={handlePress}>
           <Search />
         </TouchableOpacity>
@@ -23,7 +20,7 @@ const Header: FC<IHeader> = ({ path }) => {
         <TouchableOpacity onPress={handlePress}>
           <Menu />
         </TouchableOpacity>
-      </Container>
+      </ContainerIcons>
     </Container>
   )
 }

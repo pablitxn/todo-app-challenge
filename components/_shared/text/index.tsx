@@ -1,9 +1,11 @@
 import React, { FC } from 'react'
 import { IText } from './types'
-import StyledText from './styles'
+import { StyledText, StyledTitle } from './styles'
 
-const Text: FC<IText> = ({ children }) => {
+export const Text: FC<IText> = ({ children }) => {
   return <StyledText>{children}</StyledText>
 }
 
-export default Text
+export const Title: FC<IText> = ({ children }) => {
+  return <StyledTitle>{children}</StyledTitle>
+}
