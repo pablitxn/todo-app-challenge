@@ -1,4 +1,6 @@
 import React, { FC } from 'react'
+import { Provider } from 'react-redux'
+import store from './store'
 import 'react-native-gesture-handler'
 import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -8,9 +10,11 @@ import Header from './components/header'
 const App: FC = () => {
   return (
     <SafeAreaProvider>
-      <Header />
-      <Navigation />
-      <StatusBar />
+      <Provider store={store}>
+        <Header />
+        <Navigation />
+        <StatusBar />
+      </Provider>
     </SafeAreaProvider>
   )
 }
