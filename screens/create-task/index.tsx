@@ -7,8 +7,8 @@ import { onCreateTask } from '../../store/tasks/actions'
 
 const CreateTask: FC<ICreateTask> = () => {
   const d = useDispatch()
-  const handleSubmit = (data: IFormData) => {
-    d(onCreateTask(data))
+  const handleSubmit = (formData: IFormData) => {
+    d(onCreateTask(formData))
   }
 
   return (

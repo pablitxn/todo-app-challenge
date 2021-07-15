@@ -1,6 +1,15 @@
 interface ITaskState {
-  all: any
-  favorite: any
-  completed: any
-  uncompleted: any
+  all: Task[]
+  favorite: Task[]
+  completed: Task[]
+  uncompleted: Task[]
+}
+
+interface Task {
+  title: string
+  deadline: string
+  remind: string
+  repeat: string
+  startTime: string
+  endTime: string
 }
