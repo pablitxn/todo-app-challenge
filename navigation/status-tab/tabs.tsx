@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import All from '../../screens/all'
+// import All from '../../screens/all'
+import All from '../../screens/create-task'
 import Completed from '../../screens/completed'
 import Favorite from '../../screens/favorite'
 import Uncompleted from '../../screens/uncompleted'
