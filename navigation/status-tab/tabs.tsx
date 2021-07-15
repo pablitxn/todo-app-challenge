@@ -13,11 +13,7 @@ const TabUncompletedStack = createStackNavigator<any>()
 export const TabAll: FC = () => {
   return (
     <TabAllStack.Navigator>
-      <TabAllStack.Screen
-        name="TabOneScreen"
-        component={All}
-        options={{ headerTitle: 'Tab One Title' }}
-      />
+      <TabAllStack.Screen name="all" component={All} />
     </TabAllStack.Navigator>
   )
 }
@@ -25,11 +21,7 @@ export const TabAll: FC = () => {
 export const TabCompleted: FC = () => {
   return (
     <TabCompletedStack.Navigator>
-      <TabCompletedStack.Screen
-        name="completed"
-        component={Completed}
-        options={{ headerTitle: 'Tab One Title' }}
-      />
+      <TabCompletedStack.Screen name="completed" component={Completed} />
     </TabCompletedStack.Navigator>
   )
 }
@@ -37,11 +29,7 @@ export const TabCompleted: FC = () => {
 export const TabFavorite: FC = () => {
   return (
     <TabFavoriteStack.Navigator>
-      <TabFavoriteStack.Screen
-        name="favorite"
-        component={Favorite}
-        options={{ headerTitle: 'Tab One Title' }}
-      />
+      <TabFavoriteStack.Screen name="favorite" component={Favorite} />
     </TabFavoriteStack.Navigator>
   )
 }
@@ -49,11 +37,7 @@ export const TabFavorite: FC = () => {
 export const TabUncompleted: FC = () => {
   return (
     <TabUncompletedStack.Navigator>
-      <TabUncompletedStack.Screen
-        name="uncompleted"
-        component={Uncompleted}
-        options={{ headerTitle: 'Tab One Title' }}
-      />
+      <TabUncompletedStack.Screen name="uncompleted" component={Uncompleted} />
     </TabUncompletedStack.Navigator>
   )
 }
