@@ -16,6 +16,8 @@ const TaskForm: FC<ITaskForm> = ({ onSubmit }) => {
     deadline: '',
     remind: '',
     repeat: '',
+    startTime: '',
+    endTime: '',
   })
 
   const handleTitle = (input: string) => {
@@ -32,6 +34,14 @@ const TaskForm: FC<ITaskForm> = ({ onSubmit }) => {
 
   const handleRepeat = (itemValue: string) => {
     setState((prev) => ({ ...prev, repeat: itemValue }))
+  }
+
+  const handleStartTime = (input: string) => {
+    setState((prev) => ({ ...prev, startTime: input }))
+  }
+
+  const handleEndTime = (input: string) => {
+    setState((prev) => ({ ...prev, endTime: input }))
   }
 
   const handleSubmit = () => onSubmit(state)
@@ -51,11 +61,11 @@ const TaskForm: FC<ITaskForm> = ({ onSubmit }) => {
       <TimePickerContainer>
         <TimeInput>
           <Label>Start time</Label>
-          <TextInput onChangeText={''} value="" />
+          <TextInput onChangeText={handleStartTime} value={state.startTime} />
         </TimeInput>
         <TimeInput>
           <Label>End time</Label>
-          <TextInput onChangeText={''} value="" />
+          <TextInput onChangeText={handleEndTime} value={state.endTime} />
         </TimeInput>
       </TimePickerContainer>
 
