@@ -11,51 +11,58 @@ import { View, Button } from 'react-native'
 import { Picker } from '@react-native-picker/picker'
 
 const TaskForm: FC<ITaskForm> = ({ onSubmit }) => {
-  const [text, onChangeText] = useState('')
-  const [number, onChangeNumber] = useState(null)
+  const [state, setState] = useState({
+    title: '',
+    deadline: '',
+    remind: '',
+    repeat: '',
+  })
 
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false)
-
-  const showDatePicker = () => setDatePickerVisibility(true)
-
-  const hideDatePicker = () => setDatePickerVisibility(false)
-
-  const handleConfirm = (date: any) => {
-    console.warn('A date has been picked: ', date)
-    hideDatePicker()
+  const handleTitle = (input: string) => {
+    setState((prev) => ({ ...prev, title: input }))
   }
-  const [selectedLanguage, setSelectedLanguage] = useState()
+
+  const handleDeadline = (input: string) => {
+    setState((prev) => ({ ...prev, deadline: input }))
+  }
+
+  const handleRemind = (itemValue: string) => {
+    setState((prev) => ({ ...prev, remind: itemValue }))
+  }
+
+  const handleRepeat = (itemValue: string) => {
+    setState((prev) => ({ ...prev, repeat: itemValue }))
+  }
+
+  const handleSubmit = () => onSubmit(state)
 
   return (
     <Container>
       <View>
         <Label>Title</Label>
-        <TextInput onChangeText={onChangeText} value={text} />
+        <TextInput onChangeText={handleTitle} value={state.title} />
       </View>
 
       <View>
         <Label>Deadline</Label>
-        <TextInput onChangeText={onChangeText} value="" />
+        <TextInput onChangeText={handleDeadline} value={state.deadline} />
       </View>
 
       <TimePickerContainer>
         <TimeInput>
           <Label>Start time</Label>
-          <TextInput onChangeText={onChangeText} value="" />
+          <TextInput onChangeText={''} value="" />
         </TimeInput>
         <TimeInput>
           <Label>End time</Label>
-          <TextInput onChangeText={onChangeText} value="" />
+          <TextInput onChangeText={''} value="" />
         </TimeInput>
       </TimePickerContainer>
 
       <View>
         <Label>Remind</Label>
         <Picker
-          selectedValue={selectedLanguage}
-          onValueChange={(itemValue, itemIndex) =>
-            setSelectedLanguage(itemValue)
-          }
+          onValueChange={handleRemind}
           style={{
             height: '2rem',
           }}
@@ -71,10 +78,7 @@ const TaskForm: FC<ITaskForm> = ({ onSubmit }) => {
       <View>
         <Label>Repeat</Label>
         <Picker
-          selectedValue={selectedLanguage}
-          onValueChange={(itemValue, itemIndex) =>
-            setSelectedLanguage(itemValue)
-          }
+          onValueChange={handleRepeat}
           style={{
             height: '2rem',
           }}
@@ -86,7 +90,7 @@ const TaskForm: FC<ITaskForm> = ({ onSubmit }) => {
       </View>
 
       <View>
-        <Button title="Create a  Task" onPress={() => {}} />
+        <Button title="Create a  Task" onPress={handleSubmit} />
       </View>
     </Container>
   )
