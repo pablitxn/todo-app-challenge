@@ -2,10 +2,13 @@ import React, { FC } from 'react'
 import { ICreateTask } from './types'
 import { Container } from './styles'
 import TaskForm from '../../components/task-form'
+import { useDispatch } from 'react-redux'
+import { onCreateTask } from '../../store/tasks/actions'
 
 const CreateTask: FC<ICreateTask> = () => {
-  const handleSubmit = (data: any) => {
-    console.log(data)
+  const d = useDispatch()
+  const handleSubmit = (data: IFormData) => {
+    d(onCreateTask(data))
   }
 
   return (
